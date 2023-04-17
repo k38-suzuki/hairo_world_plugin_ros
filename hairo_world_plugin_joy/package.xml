@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>hairo_world_plugin_joy</name>
+  <version>0.0.0</version>
+  <description>The hairo_world_plugin_joy package</description>
+  <maintainer email="suzuki.kenta38@jaea.go.jp">Kenta Suzuki</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>choreonoid</build_depend>
+  <exec_depend>choreonoid</exec_depend>
+</package>

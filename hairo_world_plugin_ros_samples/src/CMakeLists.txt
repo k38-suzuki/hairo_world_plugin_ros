@@ -1,0 +1,5 @@
+choreonoid_add_simple_controller(ROSHuskyController ROSHuskyController.cpp)
+target_link_libraries(ROSHuskyController ${catkin_LIBRARIES})
+
+choreonoid_add_simple_controller(ROSJackalController ROSJackalController.cpp)
+target_link_libraries(ROSJackalController ${catkin_LIBRARIES})

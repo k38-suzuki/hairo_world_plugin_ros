@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="hairo_world_plugin_joy" name="jackal_joy" type="jackal_joy_node" />
+  <node pkg="choreonoid_ros" name="choreonoid" type="choreonoid"
+	args="$(find hairo_world_plugin_ros_samples)/project/ROS-Jackal.cnoid --start-simulation" />
+</launch>
