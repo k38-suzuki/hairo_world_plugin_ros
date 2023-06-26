@@ -65,20 +65,19 @@ int main(int argc, char **argv)
                     i == 0 ? cnoid::Joystick::L_BUTTON : cnoid::Joystick::R_BUTTON);
                 if(buttonState) {
                     if(i == 0) {
-                        k = 1.0;
+                        k = 0.4;
                     } else if(i == 1) {
                         k = 2.0;
                     }
                 }
             }
 
-            static const double w = 0.555;
-            twist.linear.x = k * (1.0 * pos[1]);
+            twist.linear.x = k * pos[1];
             twist.linear.y = 0.0;
             twist.linear.z = 0.0;
             twist.angular.x = 0.0;
             twist.angular.y = 0.0;
-            twist.angular.z = k * (2.0 * pos[0]) / w;
+            twist.angular.z = 1.4 * pos[0];
 
             publisher.publish(twist);
             stateChanged = false;
