@@ -59,25 +59,27 @@ int main(int argc, char **argv)
                 }
             }           
 
-            double k = 0.0;
+            double k[] = { 0.0, 0.0 };
             for(int i = 0; i < 2; ++i) {
                 bool buttonState = joystick.getButtonState(
                     i == 0 ? cnoid::Joystick::L_BUTTON : cnoid::Joystick::R_BUTTON);
                 if(buttonState) {
                     if(i == 0) {
-                        k = 0.4;
+                        k[0] = 0.4;
+                        k[1] = 1.0;
                     } else if(i == 1) {
-                        k = 2.0;
+                        k[0] = 2.0;
+                        k[1] = 1.0;
                     }
                 }
             }
 
-            twist.linear.x = k * pos[1];
+            twist.linear.x = k[0] * pos[1];
             twist.linear.y = 0.0;
             twist.linear.z = 0.0;
             twist.angular.x = 0.0;
             twist.angular.y = 0.0;
-            twist.angular.z = 1.4 * pos[0];
+            twist.angular.z = k[1] * 1.4 * pos[0];
 
             publisher.publish(twist);
             stateChanged = false;

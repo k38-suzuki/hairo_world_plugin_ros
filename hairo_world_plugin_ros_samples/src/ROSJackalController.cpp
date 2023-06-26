@@ -69,7 +69,7 @@ public:
 
         double pos[2];
         pos[0] = - 1.0 * twist.linear.x / 0.098;
-        pos[1] = - 1.0 * twist.angular.z * 0.555;
+        pos[1] = - 1.0 * twist.angular.z / 0.098 * 0.430 / 2.0;
 
         for(int i = 0; i < 2; ++i) {
             Link* wheelL = wheel[2 * i];
