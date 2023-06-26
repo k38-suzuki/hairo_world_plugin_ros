@@ -21,7 +21,7 @@ int main(int argc, char **argv)
     cnoid::Joystick joystick(device.c_str());
     
     ros::NodeHandle node;
-    ros::Publisher publisher = node.advertise<geometry_msgs::Twist>("husky_velocity_controller/cmd_vel", 100);
+    ros::Publisher publisher = node.advertise<geometry_msgs::Twist>("cmd_vel", 100);
     ros::Rate loop_rate(60);
     int seq = 0;
     bool stateChanged = false;
@@ -73,12 +73,12 @@ int main(int argc, char **argv)
             }
 
             static const double w = 0.555;
-            twist.linear.x = k * (-1.0 * pos[1]);
+            twist.linear.x = k * (1.0 * pos[1]);
             twist.linear.y = 0.0;
             twist.linear.z = 0.0;
             twist.angular.x = 0.0;
             twist.angular.y = 0.0;
-            twist.angular.z = k * (-2.0 * pos[0]) / w;
+            twist.angular.z = k * (2.0 * pos[0]) / w;
 
             publisher.publish(twist);
             stateChanged = false;

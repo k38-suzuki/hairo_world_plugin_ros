@@ -48,7 +48,7 @@ public:
             io->enableIO(joint);
         }
 
-        twistSubscriber = node.subscribe("jackal_velocity_controller/cmd_vel", 100, &ROSJackalController::twistCallback, this);
+        twistSubscriber = node.subscribe("cmd_vel", 100, &ROSJackalController::twistCallback, this);
 
         return true;
     }
@@ -68,8 +68,8 @@ public:
         }
 
         double pos[2];
-        pos[0] = twist.linear.x / 0.098;
-        pos[1] = twist.angular.z * 0.555;
+        pos[0] = - 1.0 * twist.linear.x / 0.098;
+        pos[1] = - 1.0 * twist.angular.z * 0.555;
 
         for(int i = 0; i < 2; ++i) {
             Link* wheelL = wheel[2 * i];
